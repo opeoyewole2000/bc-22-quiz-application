@@ -1,133 +1,38 @@
 <html>
-
 <head>
 
-<title>
-Salary Calculator
-</title>
-    
-  
-
-    
 </head>
 
+
 <body>
-    
-    <div id="header">
-    <h1>Salary Calculator</h1>
-    
-    </div>
-    
-    <div id="mainBody">
-        
-        
-        <div id="leftDiv">
-        
-        
-        
+<% include partials/headerSignIn.ejs%>
+
+ <div class="container">
+
+
+<div class="col-md-4">
+<div>
+<div class="col-md-8">
+      <form class="form-signin">
+        <h2 class="form-signin-heading">Please sign in</h2>
+        <label for="inputEmail" class="sr-only">Email address</label>
+        <input type="email" id="inputEmail" class="form-control" placeholder="Email address" required autofocus>
+        <label for="inputPassword" class="sr-only">Password</label>
+        <input type="password" id="inputPassword" class="form-control" placeholder="Password" required>
+        <div class="checkbox">
+          <label>
+            <input type="checkbox" value="remember-me"> Remember me
+          </label>
         </div>
-        <div id="contentDiv"> 
-        
-         
-        
-            <table class="inputTable">
-                <tr>
-                 <td> First Name:</td>
-                     <td> <input class="inputBox" id="fName" type="text" name="firstName" required></td>
-                    
-                </tr>
-                <tr>
-                 <td> Last Name:</td>
-                     <td> <input class="inputBox" id="lName"type="text" name="surname" required></td>
-                    
-                </tr>
-                <tr>
-                 <td>Employee type:</td>
-                     <td>
-                     <select class="inputBox" id="eType"name="employeeType">
-            <option value="select"> --SELECT-- </option>       
-            <option value="Intern">Intern</option>
-            <option value="Associate">Associate</option>
-            <option value="Manager">Manager</option>
-            <option value="Executive">Executive</option>
-            <option value="Director">Director</option>
-            
-         
-        </select>
-                    </td>
-                
-                </tr>
-                <tr>
-                
-                 <td>Number Of Years Employed:</td>
-                     <td>
-                    
-         <select class="inputBox" id="nYears" name="numberOfYears" >
-        
-             <option value="select"> --SELECT-- </option>
-             <option value="1">1</option>
-             <option value="2">2</option>
-             <option value="3">3</option>
-             <option value="4">4</option>
-             <option value="5">5</option>
-             <option value="6">6</option>
-             <option value="7">7</option>
-             <option value="8">8</option>
-             <option value="9">9</option>
-             
-             <option value="10">10</option>
-               
-            
-        </select>
-    </td>
-                
-                </tr>
-                
-                <tr>
-                 <td> </td>
-                     <td><button class="button" id="getSalaryBtn" type='submit'> Get Salary Report</button></td>
-                
-                </tr>              
-            
-            </table >
-            
-            
-            <br><br>
-            
-         
-        
-            </div>
-            
-        
-        
-          <div id="rightDiv">
-        
-        
-        </div>
-        
-        
-    
-    </div>
-    
-    
-<script src="https://www.gstatic.com/firebasejs/3.9.0/firebase.js"></script>
-<script>
-  // Initialize Firebase
-  var config = {
-    apiKey: "AIzaSyCKPPlKQ6dTbV8pPeuF7QBf0L4U7W0s2FA",
-    authDomain: "tester-1-acef6.firebaseapp.com",
-    databaseURL: "https://tester-1-acef6.firebaseio.com",
-    projectId: "tester-1-acef6",
-    storageBucket: "tester-1-acef6.appspot.com",
-    messagingSenderId: "344995473631"
-  };
-  firebase.initializeApp(config);
-</script>
-    
-    
+        <button class="btn btn-lg btn-primary btn-block" type="submit" onclick="location.href='/process_login'">Sign in</button>
+      </form>
+</div>
+
+
+    </div> <!-- /container -->
+
+
+    <% include partials/scripts.ejs%>
 </body>
-
-
-
 
 </html>

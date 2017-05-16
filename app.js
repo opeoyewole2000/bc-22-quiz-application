@@ -21,8 +21,8 @@ const auth = firebase.auth();
 
 const db = firebase.database();
 
-app.get("/signup.html",function(req,res){
-	res.sendFile(__dirname + "/" + "signup.html");
+app.get("/sign_up",function(req,res){
+	res.sendFile(__dirname + "/" + "signUp");
 });
 
 app.post("/process_signup",function(req,res){
@@ -78,7 +78,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.get('/', routes.home);
 
-app.get('/star_wars_episode/:episode_number?', routes.movie_single);
+
 
 app.get('/sign_up', routes.signUp);
  
@@ -87,6 +87,12 @@ app.get('/sign_in', routes.signIn);
  app.get('/questions', routes.questions);
 
   app.get('/dashboard', routes.dashboard);
+
+  app.get('/process_login', routes.processLogin);
+
+  app.get('/process_sign_up', routes.processSignUp);
+
+   app.get('/leaderboard', routes.leaderboard);
 
  app.get('*', routes.notFound);
 
