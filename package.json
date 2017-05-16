@@ -10,10 +10,11 @@
     "type": "git",
     "url": "git+https://github.com/opeoyewole2000/bc-22-quiz-application.git"
   },
-  "author": "",
+  "author": "ope oyewole",
   "license": "ISC",
   "dependencies": {
     "ejs": "^2.5.6",
-    "express": "^4.15.2"
+    "express": "^4.15.2",
+    "firebase": "^3.9.0"
   }
 }
