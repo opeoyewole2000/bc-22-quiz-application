@@ -10,15 +10,7 @@ exports.home = function(req, res) {
 	});
 };
 
-// Movie-single route
-exports.movie_single = function(req, res) {
-	
-		
-		res.render('movie_single', {
-		
-		});
 
-	}; 
 
 	exports.questions = function(req, res) {
 	
@@ -28,15 +20,11 @@ exports.movie_single = function(req, res) {
 		});
 
 	}; 
-exports.signUp = function(req, res) {
-	
-	res.render('signUp', {
-		
-	});
-};
+
 
 exports.dashboard = function(req, res) {
 	
+  
 	res.render('dashboard', {
 		
 	});
@@ -48,6 +36,15 @@ exports.signIn = function(req, res) {
 		
 	});
 };
+
+exports.signUp = function(req, res) {
+	
+	res.render('signUp', {
+		
+	});
+};
+
+
 
 exports.processLogin = function(req, res) {
 	

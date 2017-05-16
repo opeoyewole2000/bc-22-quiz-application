@@ -13,26 +13,31 @@
 <div class="col-md-4">
 <div>
 <div class="col-md-8">
-      <form class="form-signin">
+     
         <h2 class="form-signin-heading">Please sign in</h2>
         <label for="inputEmail" class="sr-only">Email address</label>
+        <br>
         <input type="email" id="inputEmail" class="form-control" placeholder="Email address" required autofocus>
         <label for="inputPassword" class="sr-only">Password</label>
         <input type="password" id="inputPassword" class="form-control" placeholder="Password" required>
+        <br>
         <div class="checkbox">
           <label>
             <input type="checkbox" value="remember-me"> Remember me
           </label>
         </div>
-        <button class="btn btn-lg btn-primary btn-block" type="submit" onclick="location.href='/process_login'">Sign in</button>
-      </form>
+        <br>
+        <button id='btnSignIn' class="btn btn-lg btn-primary btn-block" type="submit" >Sign in</button>
+     
 </div>
 
 
     </div> <!-- /container -->
 
 
+
     <% include partials/scripts.ejs%>
+     <script src="javascripts/controllerSignIn.js"></script>
 </body>
 
 </html>
