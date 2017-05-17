@@ -17,6 +17,7 @@ const db = firebase.database();
 
 const txtEmail = document.getElementById('inputEmail');
 const txtPassword = document.getElementById('inputPassword');
+const txtFullName = document.getElementById('fullName');
 const btnSignUp = document.getElementById('btnSignUp');
 const btnSignIn = document.getElementById('btnSignIn');
 const btnLogout = document.getElementById('btnLogout');
@@ -25,52 +26,20 @@ const btnLogout = document.getElementById('btnLogout');
 
 const auth = firebase.auth();
 
-// function signUp(){
+
+  const usersRefObject = firebase.database().ref().child('Users');
+
+  //sync data in real realtime
+  usersRefObject.on('child_added',snap => console.log(snap.val()));//using value event type
+
   
-// const email = txtEmail.value;
-// const password = txtPassword.value;
-// console.log(email);
-// window.location.href = '/dashboard';
 
-// const promise = auth.createUserWithEmailAndPassword(email,password);
-// promise.catch(e => console.log(e.message));
-// };
-
-
-// function signIn(){
-//  const email = txtEmail.value;
-// const password = txtPassword.value;
-
-// const promise = auth.signInWithEmailAndPassword(email,password);
-// promise.catch(e => console.log(e.message));
-// window.location.href = '/dashboard';
-
-// };
-
-
-// function logout(){
-//   firebase.auth().signOut().then(function() {
-//   // Sign-out successful.
-//    window.location.href = '/';
-// }).catch(function(error) {
-//   // An error happened.
-// });
-
-// }
-
-// btnSignIn.addEventListener('click',e =>{
-// const email = txtEmail.value;
-// const password = txtPassword.value;
-
-// const promise = auth.signInWithEmailAndPassword(email,password);
-// promise.catch(e => console.log(e.message));
-// window.location.href = '/dashboard';
-// });
 
  btnSignUp.addEventListener('click',e =>{
   
 const email = txtEmail.value;
 const password = txtPassword.value;
+const fullName = txtFullName.value;
 console.log(email);
 
 
@@ -81,6 +50,30 @@ const promise = auth.createUserWithEmailAndPassword(email,password);
 promise.catch(e => console.log(e.message));
 promise.then(function(user){
   if(user){
+    const currentProfile = firebase.auth().currentUser;
+  currentProfile.updateProfile({
+  displayName: fullName
+  //photoURL: "https://example.com/jane-q-user/profile.jpg"
+}).then(function() {
+  // Profile updated successfully!
+  // "Jane Q. User"
+  var displayName = currentProfile.displayName;
+  console.log(displayName);
+  // "https://example.com/jane-q-user/profile.jpg"
+  //var photoURL = user.photoURL;
+}, function(error) {
+  // An error happened.
+});
+
+usersRefObject.push({
+Email : email,
+Fullname : fullName,
+Score : '0',
+Level : 'Beginner'
+
+});
+
+
     window.location = "/dashboard";
   }
 });
@@ -104,7 +97,7 @@ promise.then(function(user){
 auth.onAuthStateChanged(function(user){
 		if(user){
 			console.log(user)
-	
+	window.location = '/dashboard';
 		}else{
 		console.log("not logged in");
 }

@@ -5,21 +5,66 @@
 
 <body>
 <% include partials/header.ejs %>
-<div>
-<h2>Question 2</h2>
-</div>
 
-<div>
-<input type="radio">option_1
-<input type="radio">option_2
-<input type="radio">option_3
-<input type="radio">option_4
+    <div style='height:50px'></div>
+<div class="container-fluid" style='height:600px'>
+  <div class="row">
+    <div class="col-sm-3" style="">
+      
+    </div>
+    <div class="col-sm-6" style="">
+      <h2>Question 1</h2>
+        <h2>What is Andela????</h2>
+        <br>
+        <br>
+        
+            <div class="btn-group" data-toggle="buttons">
+ <!--
+  <label class="btn btn-primary active">
+    <input type="radio" name="options" id="option1" autocomplete="off" checked> Radio 1 (preselected)
+  </label>-->
+   <label class="btn btn-primary ">
+    <input type="radio" name="options" id="option1" autocomplete="off"> Code Camp
+  </label>
+  <br/>
+  <br/>
+  <br/>
+  <label class="btn btn-primary">
+    <input type="radio" name="options" id="option2" autocomplete="off"> Coders camp
+  </label>
+  <br/>
+<br/>
+<br/>
+  <label class="btn btn-primary">
+    <input type="radio" name="options" id="option3" autocomplete="off"> Camp Jokes
+  </label>
+  <br/>
+  <br/>
+  <br/>
+  <label class="btn btn-primary ">
+    <input type="radio" name="options" id="option1" autocomplete="off"> Stress
+  </label>
+                <br><br><br><br>
+                <div style="text-align:right;width:600px">
+                <button id='btnNextQuestion' type="button"  class="btn btn-warning">Next</button>
+                </div>
 </div>
+   
+        
+    </div>
+    <div class="col-sm-3" style="">
+      
+    </div>
+  </div>
+    </div>
+    
+    
 
 
  <% include partials/footer.ejs %>
 
   <% include partials/scripts.ejs %>
+    <script src="javascripts/controllerLogout.js"></script>
 </body>
 
 

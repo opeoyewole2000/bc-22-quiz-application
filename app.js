@@ -122,6 +122,8 @@ app.get('/sign_in', routes.signIn);
 
    app.get('/leaderboard', routes.leaderboard);
 
+   app.get('/answers', routes.answers);
+
 //  app.get('*', routes.notFound);
 
 // Listen on port 3000

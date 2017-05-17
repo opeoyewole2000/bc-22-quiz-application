@@ -67,6 +67,14 @@ exports.leaderboard = function(req, res) {
 	});
 };
 
+exports.answers = function(req, res) {
+	
+	res.render('answers', {
+		
+	});
+};
+
+
 
 
 
