@@ -21,6 +21,7 @@ const btnSignUp = document.getElementById('btnSignUp');
 const btnSignIn = document.getElementById('btnSignIn');
 const btnLogout = document.getElementById('btnLogout');
 const userFullname = document.getElementById('userFullname');
+let question_number = 1;
 //const userWelcomeName = document.getElementById('welcomeName');
 
 
@@ -46,7 +47,7 @@ retrieveLeaderBoardRefObject.on("child_added", function(snapshot, prevChildKey) 
   console.log("Previous Post ID: " + prevChildKey);
     
     $('#tableBody').append(
-    ' <tr> <td>1</td>  <td>'+newPost.Fullname+'</td>   <td>'+newPost.Score+'</td>  <td>'+newPost.Level+'</td>   </tr>'
+    ' <tr> <td>'+question_number++ +'</td>  <td>'+newPost.Fullname+'</td>   <td>'+newPost.Score+'</td>  <td>'+newPost.Level+'</td>   </tr>'
 );
 });
 
@@ -71,7 +72,7 @@ auth.onAuthStateChanged(function(user){
 		console.log("not logged in")
 window.location.href = '/sign_in';
 }
-	})
+	});
 
 
 

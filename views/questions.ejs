@@ -13,8 +13,15 @@
       
     </div>
     <div class="col-sm-6" style="">
-        <h2>Question </h2><span id="question_number">1</span>
-        <h2 id="the_question">What is Andela????</h2>
+        
+        <div style='background:white;padding:30px;border:2px solid #dfe3ee;border-radius:6px'>
+            
+         
+            <div style='text-align:right'>
+            <button type="button" class="btn btn-primary" style="background:#9c4c95">Question <span class=" badge"id="question_number">1</span></button>
+            </div>
+       
+        <h2 style="background:#ff5349;padding:20px;color:white" id="the_question">Loading...</h2>
         <br>
         <br>
         
@@ -24,34 +31,34 @@
     <input type="radio" name="options" id="option1" autocomplete="off" checked> Radio 1 (preselected)
   </label>-->
    <label for='option_a' class="btn btn-primary" >
-    <input type="radio" name="options" id="option_a" value='Code' autocomplete="off"> Code Camp
+    <input type="radio" name="options" id="option_a" value='Code' autocomplete="off">...
   </label>
   <br/>
   <br/>
   <br/>
   <label for='option_b' class="btn btn-primary">
-    <input type="radio" name="options" id="option_b" value="coders" autocomplete="off"> Coders camp
+    <input type="radio" name="options" id="option_b" value="coders" autocomplete="off"> ...
   </label>
   <br/>
 <br/>
 <br/>
   <label for='option_c' class="btn btn-primary">
-    <input type="radio" name="options" id="option_c" autocomplete="off"> Camp Jokes
+    <input type="radio" name="options" id="option_c" autocomplete="off"> ...
   </label>
   <br/>
   <br/>
   <br/>
   <label for='option_d' class="btn btn-primary">
-    <input type="radio" name="options" id="option_d" autocomplete="off"> Stress
+    <input type="radio" name="options" id="option_d" autocomplete="off">...
   </label>
                 <br><br><br><br>
-                <div style="text-align:right;width:600px">
+                <div style="text-align:right;width:570px">
                 <button id='btnEndQuiz' type="button"  class="btn btn-success" style="display:none">End Quiz</button>
                 <button id='btnNextQuestion' type="button"  class="btn btn-warning">Next</button>
                 </div>
 </div>
    
-        
+        </div>
     </div>
     <div class="col-sm-3" style="">
       
@@ -62,7 +69,7 @@
     
 
 
- <% include partials/footer.ejs %>
+
 
   <% include partials/scripts.ejs %>
     <script src="javascripts/controllerQuestions.js"></script>

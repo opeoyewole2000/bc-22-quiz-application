@@ -29,7 +29,12 @@ let questionsObject;
 let selectedAnswer;
 let currentQuestion;
 let currentAnswer;
-  let currentProfile;
+let currentProfile;
+let dbScore;
+let currentScore;
+let updatedScore = 0;
+let currentLevel;
+let trackedScore =0;
 //let option_a =  document.getElementById('option_a');
 //let option_b=  document.getElementById('option_b');
 //let option_c =  document.getElementById('option_c');
@@ -39,7 +44,6 @@ console.log(option_a.value);
 
 let question_number_count = 1;
 
-theQuestion.innerHTML ='Who am i';
 question_number.innerHTML = question_number_count;
 
 //console.log(txtEmail.value);
@@ -72,10 +76,7 @@ questionsLength = questions.numChildren();
     $('#option_c').get(0).nextSibling.data = questionsObject.child('question_'+dbQuestionCount+'').val().option_c;
     $('#option_d').get(0).nextSibling.data = questionsObject.child('question_'+dbQuestionCount+'').val().option_d;
     
-   //  $('input[id=option_b]').html(questionsObject.child('question_'+dbQuestionCount+'').val().option_b);
-    //   $('label[for=option_b]').html(questionsObject.child('question_'+dbQuestionCount+'').val().option_b);
-//       $('label[for=option_c]').html(questionsObject.child('question_'+dbQuestionCount+'').val().option_c);
-//       $('label[for=option_d]').html(questionsObject.child('question_'+dbQuestionCount+'').val().option_d);
+  
 
 });
 
@@ -110,8 +111,12 @@ questionsLength = questions.numChildren();
 
  });
 
+ let currentID;
+
+
 
  btnNextQuestion.addEventListener('click',e =>{
+   
      
      console.log(currentProfile.email);
      
@@ -121,12 +126,16 @@ questionsLength = questions.numChildren();
 currentQuestion = questionsObject.child('question_'+dbQuestionCount+'').val().question;
      currentAnswer = questionsObject.child('question_'+dbQuestionCount+'').val().answer;
  selectedAnswer = $('.btn-group label.active input').get(0).nextSibling.data;
-     alert(selectedAnswer);
+   //  alert(selectedAnswer);
+     
+     if(selectedAnswer === currentAnswer){
+         trackedScore++;
+     }
      
 answersRefObj.once('value').then(function(answers){
     
     
-    answersRefObj.set({
+answersRefObj.set({
 question :  currentQuestion,
 answer : currentAnswer,
 choice : selectedAnswer
@@ -135,8 +144,7 @@ choice : selectedAnswer
  });
      
  question_number_count++;
-  // Sign-out successful.
-  
+
     
      dbQuestionCount++;
 
@@ -164,9 +172,50 @@ choice : selectedAnswer
 
 
 btnEndQuiz.addEventListener('click',e =>{
- usersRefObj = firebase.database().ref('Users');
+  let usersRefObject =  firebase.database().ref('Users').orderByChild("Email").equalTo('mona@yahoo.com');
+          usersRefObject.once('child_added').then(function(users){
+               currentID = users.key;
+              
+              
+              
+        //dbScore = users.val().Score;
+        //  updatedScore = (int)dbScore + currentScore; 
+       // usersRefObject.set({
+         //     Score:'1',
+              
+          //});
+              
+      let userRefObject =  firebase.database().ref('Users/'+currentID+'');
+          userRefObject.once('value').then(function(user){
+              console.log(user.child('Level').val()) ;
+             currentLevel =  user.child('Level').val();
+             currentScore = parseInt(user.child('Score').val());
+              if(user.child('Score').val() < 5 ){
+                  newLevel = 'Beginner';
+              }
+               else if(user.child('Score').val() > 5 ){
+                  newLevel = 'Intermediate';
+              }
+           //  dbScore = users.val().Score;
+        //  updatedScore = (int)dbScore + currentScore; 
+             updatedScore = trackedScore + parseInt(currentScore);
+        userRefObject.set({
+            Email:currentProfile.email,
+              Score: updatedScore,
+            Level:newLevel,
+            Fullname:currentProfile.displayName,
+              
+          });  
+              
+              
+              
+    });
     
+                         
+       
+    });
     
+     
     window.location = '/answers';
 });
 
@@ -183,7 +232,7 @@ console.log(currentProfile.displayName);
 		console.log("not logged in")
         window.location.href = '/sign_in';
 }
-	})
+	});
 
 
 

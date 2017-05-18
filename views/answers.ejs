@@ -2,11 +2,47 @@
 <head></head>
 
 <body>
-<h2>Your Score!!</h2>
+<% include partials/header.ejs%>
+    <div class="container-fluid">
     
+        <div class="row">  
+ <div class="col-sm-2" style="">
+      
+    </div>
+     <div class="col-sm-8" style="">
+         
+         
+      <h2>Your Score!!</h2>
+    
+         <div style='background:white;padding:30px'>
     <p>Your score will be added to your previous cumulative score to to get your score on the Leaderboard </p>
-
-<pre id="object"></pre>
+    <table class="table table-striped">
+      
+              <thead>
+              <tr>
+                <th>#</th>
+                <th>Question</th>
+                <th>Choice</th>
+                <th>Answer</th>
+                  
+              </tr>
+            </thead>
+             
+         <tbody id="tableBodyAnswers">
+             
+             
+             </tbody>
+         
+         </table>
+          </div>
+    </div>
+    
+     <div class="col-sm-2" style="">
+      
+    </div>
+            </div>
+      </div>
+  
 
 
 <% include partials/scripts.ejs%>

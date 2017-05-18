@@ -58,8 +58,8 @@ auth.onAuthStateChanged(function(user){
 		if(user){
       const currentProfile = firebase.auth().currentUser;
 			console.log(currentProfile.displayName);
-      userFullname.innerHTML = currentProfile.displayName;
-	userWelcomeName.innerHTML = currentProfile.displayName;
+      userFullname.innerHTML =  currentProfile.displayName;
+	userWelcomeName.innerHTML = '    ,' +currentProfile.displayName;
 		}else{
 		console.log("not logged in")
 window.location.href = '/sign_in';
