@@ -134,14 +134,14 @@ choice : selectedAnswer
  question_number_count++;
   // Sign-out successful.
   question_number.innerHTML = question_number_count;
-    theQuestion.innerHTML = questionsObject.child('question_'+dbQuestionCount+'').val().question;
+    
      dbQuestionCount++;
 
 //     var active = $('.radio_buttons[class*="active focus"]').val();
 //     alert(active);
      
    
-   
+   theQuestion.innerHTML = questionsObject.child('question_'+dbQuestionCount+'').val().question;
      
     $('#option_a').get(0).nextSibling.data = questionsObject.child('question_'+dbQuestionCount+'').val().option_a;
     $('#option_b').get(0).nextSibling.data = questionsObject.child('question_'+dbQuestionCount+'').val().option_b;
@@ -150,9 +150,19 @@ choice : selectedAnswer
      //questionsObject.child('question_'+dbQuestionCount+'').val().option_a
      
   $('.btn').removeClass('active');
+     if(dbQuestionCount === questionsLength)
+         {
+              $('#btnNextQuestion').hide();
+             $('#btnSubmit').show();
+            
+         }
  });
 
 
+btnSubmit.addEventListener('click',e =>{
+    
+    
+});
 
 
 
