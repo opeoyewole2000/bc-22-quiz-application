@@ -13,36 +13,36 @@
       
     </div>
     <div class="col-sm-6" style="">
-      <h2>Question 1</h2>
-        <h2>What is Andela????</h2>
+        <h2>Question </h2><span id="question_number">1</span>
+        <h2 id="the_question">What is Andela????</h2>
         <br>
         <br>
         
-            <div class="btn-group" data-toggle="buttons">
+            <div class="btn-group" data-toggle="buttons" id='myRadioGroup'>
  <!--
   <label class="btn btn-primary active">
     <input type="radio" name="options" id="option1" autocomplete="off" checked> Radio 1 (preselected)
   </label>-->
-   <label class="btn btn-primary ">
-    <input type="radio" name="options" id="option1" autocomplete="off"> Code Camp
+   <label for='option_a' class="btn btn-primary" >
+    <input type="radio" name="options" id="option_a" value='Code' autocomplete="off"> Code Camp
   </label>
   <br/>
   <br/>
   <br/>
-  <label class="btn btn-primary">
-    <input type="radio" name="options" id="option2" autocomplete="off"> Coders camp
+  <label for='option_b' class="btn btn-primary">
+    <input type="radio" name="options" id="option_b" value="coders" autocomplete="off"> Coders camp
   </label>
   <br/>
 <br/>
 <br/>
-  <label class="btn btn-primary">
-    <input type="radio" name="options" id="option3" autocomplete="off"> Camp Jokes
+  <label for='option_c' class="btn btn-primary">
+    <input type="radio" name="options" id="option_c" autocomplete="off"> Camp Jokes
   </label>
   <br/>
   <br/>
   <br/>
-  <label class="btn btn-primary ">
-    <input type="radio" name="options" id="option1" autocomplete="off"> Stress
+  <label for='option_d' class="btn btn-primary">
+    <input type="radio" name="options" id="option_d" autocomplete="off"> Stress
   </label>
                 <br><br><br><br>
                 <div style="text-align:right;width:600px">
@@ -64,7 +64,7 @@
  <% include partials/footer.ejs %>
 
   <% include partials/scripts.ejs %>
-    <script src="javascripts/controllerLogout.js"></script>
+    <script src="javascripts/controllerQuestions.js"></script>
 </body>
 
 
