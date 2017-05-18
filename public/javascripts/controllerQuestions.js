@@ -29,6 +29,7 @@ let questionsObject;
 let selectedAnswer;
 let currentQuestion;
 let currentAnswer;
+  let currentProfile;
 //let option_a =  document.getElementById('option_a');
 //let option_b=  document.getElementById('option_b');
 //let option_c =  document.getElementById('option_c');
@@ -112,6 +113,8 @@ questionsLength = questions.numChildren();
 
  btnNextQuestion.addEventListener('click',e =>{
      
+     console.log(currentProfile.email);
+     
      answersRefObj = firebase.database().ref('answer_table/question_'+dbQuestionCount+'');
      
      
@@ -133,14 +136,20 @@ choice : selectedAnswer
      
  question_number_count++;
   // Sign-out successful.
-  question_number.innerHTML = question_number_count;
+  
     
      dbQuestionCount++;
 
 //     var active = $('.radio_buttons[class*="active focus"]').val();
 //     alert(active);
      
-   
+   if(dbQuestionCount === questionsLength + 1)
+         {
+              $('#btnNextQuestion').hide();
+             $('#btnEndQuiz').show();
+            return;
+         }
+     question_number.innerHTML = question_number_count;
    theQuestion.innerHTML = questionsObject.child('question_'+dbQuestionCount+'').val().question;
      
     $('#option_a').get(0).nextSibling.data = questionsObject.child('question_'+dbQuestionCount+'').val().option_a;
@@ -150,26 +159,24 @@ choice : selectedAnswer
      //questionsObject.child('question_'+dbQuestionCount+'').val().option_a
      
   $('.btn').removeClass('active');
-     if(dbQuestionCount === questionsLength)
-         {
-              $('#btnNextQuestion').hide();
-             $('#btnSubmit').show();
-            
-         }
+     
  });
 
 
-btnSubmit.addEventListener('click',e =>{
+btnEndQuiz.addEventListener('click',e =>{
+ usersRefObj = firebase.database().ref('Users');
     
     
+    window.location = '/answers';
 });
 
 
 
 auth.onAuthStateChanged(function(user){
 		if(user){
-      const currentProfile = firebase.auth().currentUser;
-			console.log(currentProfile.displayName);
+      currentProfile = firebase.auth().currentUser;
+console.log(currentProfile.displayName);
+            
       userFullname.innerHTML = currentProfile.displayName;
 	//userWelcomeName.innerHTML = currentProfile.displayName;
 		}else{
