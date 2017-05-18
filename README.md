@@ -6,3 +6,12 @@ Features
 -Users can view the answers to quiz upon submission
 -users can view leaderboard
 
+#Installation
+Please install the following dependencies
+Firebase
+ejs
+express
+
+#Authour
+Ope Oyewole
+
