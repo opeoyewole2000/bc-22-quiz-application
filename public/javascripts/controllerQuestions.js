@@ -26,7 +26,7 @@ const question_number = document.getElementById('question_number');
 let theQuestion = document.getElementById('the_question');
 let dbQuestionCount = 1;
 let questionsObject;
-let selectedAnswer;
+let selectedAnswer= 'not';
 let currentQuestion;
 let currentAnswer;
 let currentProfile;
@@ -71,10 +71,10 @@ questionsLength = questions.numChildren();
     
     
     theQuestion.innerHTML = questionsObject.child('question_'+dbQuestionCount+'').val().question;
-    $('#option_a').get(0).nextSibling.data = questionsObject.child('question_'+dbQuestionCount+'').val().option_a;
-    $('#option_b').get(0).nextSibling.data = questionsObject.child('question_'+dbQuestionCount+'').val().option_b;
-    $('#option_c').get(0).nextSibling.data = questionsObject.child('question_'+dbQuestionCount+'').val().option_c;
-    $('#option_d').get(0).nextSibling.data = questionsObject.child('question_'+dbQuestionCount+'').val().option_d;
+    $('#option_ar').get(0).nextSibling.data = questionsObject.child('question_'+dbQuestionCount+'').val().option_a;
+    $('#option_br').get(0).nextSibling.data = questionsObject.child('question_'+dbQuestionCount+'').val().option_b;
+    $('#option_cr').get(0).nextSibling.data = questionsObject.child('question_'+dbQuestionCount+'').val().option_c;
+    $('#option_dr').get(0).nextSibling.data = questionsObject.child('question_'+dbQuestionCount+'').val().option_d;
     
   
 
@@ -125,7 +125,21 @@ questionsLength = questions.numChildren();
      
 currentQuestion = questionsObject.child('question_'+dbQuestionCount+'').val().question;
      currentAnswer = questionsObject.child('question_'+dbQuestionCount+'').val().answer;
+      if( $('#option_a').hasClass('active') || $('#option_b').hasClass('active') || $('#option_c').hasClass('active') || $('#option_d').hasClass('active'))
+         {
+              
+                 
+         }
+     else{
+         
+          alert('please Select one Option');
+             return;
+     }
+     
  selectedAnswer = $('.btn-group label.active input').get(0).nextSibling.data;
+     
+            
+    
    //  alert(selectedAnswer);
      
      if(selectedAnswer === currentAnswer){
@@ -160,10 +174,10 @@ choice : selectedAnswer
      question_number.innerHTML = question_number_count;
    theQuestion.innerHTML = questionsObject.child('question_'+dbQuestionCount+'').val().question;
      
-    $('#option_a').get(0).nextSibling.data = questionsObject.child('question_'+dbQuestionCount+'').val().option_a;
-    $('#option_b').get(0).nextSibling.data = questionsObject.child('question_'+dbQuestionCount+'').val().option_b;
-    $('#option_c').get(0).nextSibling.data = questionsObject.child('question_'+dbQuestionCount+'').val().option_c;
-    $('#option_d').get(0).nextSibling.data = questionsObject.child('question_'+dbQuestionCount+'').val().option_d;
+    $('#option_ar').get(0).nextSibling.data = questionsObject.child('question_'+dbQuestionCount+'').val().option_a;
+    $('#option_br').get(0).nextSibling.data = questionsObject.child('question_'+dbQuestionCount+'').val().option_b;
+    $('#option_cr').get(0).nextSibling.data = questionsObject.child('question_'+dbQuestionCount+'').val().option_c;
+    $('#option_dr').get(0).nextSibling.data = questionsObject.child('question_'+dbQuestionCount+'').val().option_d;
      //questionsObject.child('question_'+dbQuestionCount+'').val().option_a
      
   $('.btn').removeClass('active');
