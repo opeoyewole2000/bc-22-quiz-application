@@ -21,7 +21,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 // Routes
 
-app.get('/home', routes.home);
+app.get('/', routes.home);
 
 
 
