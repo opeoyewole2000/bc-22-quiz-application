@@ -46,19 +46,6 @@ exports.signUp = function(req, res) {
 
 
 
-exports.processLogin = function(req, res) {
-	
-	res.render('processLogin', {
-		
-	});
-};
-
-exports.processSignUp = function(req, res) {
-	
-	res.render('processSignUp', {
-		
-	});
-};
 
 exports.leaderboard = function(req, res) {
 	

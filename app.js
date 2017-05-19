@@ -1,8 +1,8 @@
 const express = require('express');
 const path = require('path');
 const app = express();
-const firebase = require("firebase");
-require("firebase/auth");
+//const firebase = require("firebase");
+//require("firebase/auth");
 const routes = require('./routes');
 
 
@@ -21,7 +21,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 // Routes
 
-app.get('/', routes.home);
+app.get('/home', routes.home);
 
 
 
@@ -33,9 +33,7 @@ app.get('/sign_in', routes.signIn);
 
  app.get('/dashboard', routes.dashboard);
 
-  app.get('/process_login', routes.processLogin);
 
-  app.get('/process_sign_up', routes.processSignUp);
 
    app.get('/leaderboard', routes.leaderboard);
 
