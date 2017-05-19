@@ -23,6 +23,12 @@ const btnLogout = document.getElementById('btnLogout');
 const userFullname = document.getElementById('userFullname');
 let answerRefObj;
 let question_number = 1;
+let trackSessionScore =0;
+let numberOfQuestions;
+let currentChoice;
+let currentAnswer;
+let dbQuestionCount =1;
+
 //const userWelcomeName = document.getElementById('welcomeName');
 
 //console.log(txtEmail.value);
@@ -46,10 +52,58 @@ const auth = firebase.auth();
 //  console.log("Previous Post ID: " + prevChildKey);
 //});
 
+  
+    
+
+
+answerRefObj = firebase.database().ref('answer_table');
+answerRefObj.once('value',function(answers){
+  //console.log(answers.val().answer);
+    //console.log(answers.val().choice);
+    
+//    currentChoice = answers.val().choice;
+//    currentAnswer = answers.val().answer;
+   
+    
+   // var newPost = answers.val();
+    //console.log(answers.numChildren());
+    numberOfQuestions = answers.numChildren();
+//    $('#tableBodyAnswers').append(
+//     ' <tr> <td>'+question_number++ +'</td>  <td>'+newPost.question +'</td>   <td>'+newPost.choice+'</td>  <td>'+newPost.answer+'</td>    </tr>'
+   for(let i=1;i<=numberOfQuestions;i++)
+         {
+ answersRefObj = firebase.database().ref('answer_table/question_'+i+'');
+     
+ 
+currentChoice = answers.child('question_'+i+'').val().choice;
+     currentAnswer = answers.child('question_'+i+'').val().answer;
+              if(currentAnswer === currentChoice){
+        
+        trackSessionScore++;
+    }
+             
+         }
+
+
+console.log(trackSessionScore);
+    
+    document.getElementById('numCorrect').innerHTML = trackSessionScore;
+    document.getElementById('numQuestions').innerHTML = numberOfQuestions;
+     document.getElementById('slash').innerHTML = '/';
+ });
+
+
+
+ 
+
+
+
+
 answersRefObj = firebase.database().ref('answer_table');
 answersRefObj.on('child_added',function(answers){
   console.log(answers.val().answer);
     var newPost = answers.val();
+  //  console.log(answers.numChildren());
     
     $('#tableBodyAnswers').append(
      ' <tr> <td>'+question_number++ +'</td>  <td>'+newPost.question +'</td>   <td>'+newPost.choice+'</td>  <td>'+newPost.answer+'</td>    </tr>'

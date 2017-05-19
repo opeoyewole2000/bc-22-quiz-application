@@ -172,7 +172,7 @@ choice : selectedAnswer
 
 
 btnEndQuiz.addEventListener('click',e =>{
-  let usersRefObject =  firebase.database().ref('Users').orderByChild("Email").equalTo('mona@yahoo.com');
+  let usersRefObject =  firebase.database().ref('Users').orderByChild("Email").equalTo(currentProfile.email);
           usersRefObject.once('child_added').then(function(users){
                currentID = users.key;
               
