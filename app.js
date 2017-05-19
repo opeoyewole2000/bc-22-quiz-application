@@ -42,7 +42,7 @@ app.get('/sign_in', routes.signIn);
 //  app.get('*', routes.notFound);
 
 // Listen on port 3000
-app.listen(3000,function(req,res){
+app.listen(process.env.PORT || 3000,function(req,res){
     console.log('listening on port 3000');
 }
 );
